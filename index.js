@@ -5,7 +5,7 @@ const port = 3200
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }));
 app.get('/',function(req,res){
-    res.render('index');
+    res.render('home');
 });
 app.post('/download',download )
 app.get('/download',function(req,res){
