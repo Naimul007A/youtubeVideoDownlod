@@ -1,9 +1,11 @@
 const puppeteer = require("puppeteer");
+const chromium = require('chrome-aws-lambda');
 const download = async (req, res) => {
     const url =req.body.url;
     const browser = await puppeteer.launch({
+        args: chromium.args,
+        executablePath: await chromium.executablePath,
         headless: true,
-        defaultViewport:{width: 1366, height: 768},
     });
     const page = await browser.newPage();
     await page.goto('https://en.savefrom.net/1-youtube-video-downloader-533nN/',{waitUntil: 'networkidle2'});
