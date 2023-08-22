@@ -1,11 +1,13 @@
-const puppeteer = require("puppeteer-core");
-const chromium = require('chrome-aws-lambda');
 const download = async (req, res) => {
+    const puppeteer = require("puppeteer-core");
+    const chromium = require('chrome-aws-lambda');
     const url =req.body.url;
     const browser = await puppeteer.launch({
-        args: chromium.args,
+        args: [...chromium.args, '--hide-scrollbars', '--disable-web-security'],
+        defaultViewport: chromium.defaultViewport,
         executablePath: await chromium.executablePath,
-        headless: chromium.headless,
+        headless: true,
+        ignoreHTTPSErrors: true,
     });
     const page = await browser.newPage();
     await page.goto('https://en.savefrom.net/1-youtube-video-downloader-533nN/',{waitUntil: 'networkidle2'});
