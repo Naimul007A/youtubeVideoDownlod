@@ -8,11 +8,7 @@ app.use(express.urlencoded({ extended: true }));
 app.get('/',function(req,res){
     res.render('home');
 });
-app.post('/download',download )
-app.get('/download',function(req,res){
-    console.log(req.query.url);
-});
-
+app.get('/download',download )
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
 })
