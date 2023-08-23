@@ -1,4 +1,4 @@
 [functions]
   external_node_modules = ["express"]
- functions ="index.js"
+  node_bundler = "esbuild"
 

@@ -1,7 +1,6 @@
-
+const puppeteer = require("puppeteer");
+const chromium = require('chrome-aws-lambda');
 const download = async (req, res) => {
-    const puppeteer = require("puppeteer-core");
-    const chromium = require('chrome-aws-lambda');
     const url =req.body.url;
     const browser = await puppeteer.launch({
         ignoreDefaultArgs: ['--disable-extensions'],
