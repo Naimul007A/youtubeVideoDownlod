@@ -1,11 +1,12 @@
+
 const download = async (req, res) => {
-    const puppeteer = require("puppeteer");
+    const puppeteer = require("puppeteer-core");
     const chromium = require('chrome-aws-lambda');
     const url =req.body.url;
     const browser = await puppeteer.launch({
-        args: [...chromium.args, '--hide-scrollbars', '--disable-web-security'],
+        args:chromium.args,
         defaultViewport: chromium.defaultViewport,
-        executablePath: await chromium.executablePath,
+        executablePath: process.env.EXCEUTABLE_PATH || await chromium.executablePath,
         headless: true,
         ignoreHTTPSErrors: true,
     });
@@ -33,6 +34,6 @@ const download = async (req, res) => {
         title: title,
         duration: duration
     }
-    res.render('download',{result:result});
+    res.json(result);
 }
 module.exports = download;
