@@ -5,10 +5,47 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="/css/style.css" rel="stylesheet">
     <title>Download your file</title>
 </head>
 <body>
-    <h1>Download your file</h1>
-    <a href="<%= url %>">Download now (720p)</a>
+<h2 class="text-3xl font-bold text-center text-gray-900 mt-12 font-mono">Download Video from YouTube</h2>
+ <div class="w-[98%] lg:w-[50%] mx-auto rounded-md mt-5 p-3">
+     <div class="flex flex-col p-2 rounded-lg bg-white mx-auto shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]  md:flex-row">
+         <img
+                 class="h-96  w-full lg:w-[40%] rounded-md"
+                 src="<%= result.imageLink%>"
+                 alt="" />
+         <div class="flex w-full lg:w-[60%] flex-col justify-start p-6">
+             <p class=" text-xl font-bold font-mono text-gray-900">
+                    <%= result.title%>
+             </p>
+             <p class="text-normal font-mono pt-2 font-medium text-gray-900">
+                 Duration: <%= result.duration%>
+             </p>
+             <div class="pt-5">
+                 <table class="border-collapse border border-slate-500 p-2 font-mono">
+                     <thead>
+                     <tr>
+                         <th class="border-2 border-slate-600  p-2">File Type</th>
+                         <th class="border-2 border-slate-600 p-2">File Size</th>
+                         <th class="border-2 border-slate-600 p-2">Action</th>
+                     </tr>
+                     </thead>
+                     <tbody>
+                     <tr>
+                         <td class="border border-slate-700 p-2"> MP4 auto quality </td>
+                         <td class="border border-slate-700 p-2">MB</td>
+                         <td class="border border-slate-700 p-2">
+                             <a class="text-purple-700 font-bold" href="<%= result.url%>">Download</a>
+                         </td>
+                     </tr>
+                     </tbody>
+                 </table>
+             </div>
+         </div>
+     </div>
+     <a class="font-mono text-purple-700 float-right py-6" href="/">Back to home</a>
+ </div>
 </body>
 </html>
